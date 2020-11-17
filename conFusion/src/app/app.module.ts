@@ -45,6 +45,7 @@ import { LoginComponent } from './login/login.component';
     ContactComponent,
     LoginComponent
   ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -61,14 +62,19 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     FormsModule
   ],
+
   providers: [
     DishService,
     PromotionService,
     LeaderService
   ],
+ 
+  bootstrap: [
+    AppComponent
+  ],
+
   entryComponents: [
     LoginComponent
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
 export class AppModule { }
