@@ -16,6 +16,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms'; 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+//import { HttpClientModule } from '@angular/common/http';
+//import { baseURL } from './shared/baseurl';
 
 import { AppComponent } from './app.component';
 
@@ -69,12 +71,14 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule
+    //HttpClientModule
   ],
 
   providers: [
     DishService,
     PromotionService,
     LeaderService
+    //{provide: 'BaseURL', useValue: baseURL}
   ],
  
   bootstrap: [
