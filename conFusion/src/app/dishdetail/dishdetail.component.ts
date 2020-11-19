@@ -13,12 +13,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.scss']
 })
+
 export class DishdetailComponent implements OnInit {
   dish: Dish;
   dishIds: string[];
   prev: string;
   next: string;
   // errMess: string;
+  // dishcopy: Dish;
 
   comment: Comment;
   commentForm: FormGroup;
@@ -35,6 +37,7 @@ export class DishdetailComponent implements OnInit {
       'required': 'Comment is required.'
     }
   };
+  
 
   constructor(private dishservice: DishService,
     private route: ActivatedRoute,
@@ -50,6 +53,12 @@ export class DishdetailComponent implements OnInit {
     this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
     this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
     .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
+    
+    // this.route.params
+    // .pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
+    // .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); },
+    //   errmess => this.errMess = <any>errmess );
+    
 
     // this.dishService.getDishes()
     // .subscribe(dishes => this.dishes = dishes,
@@ -83,11 +92,20 @@ export class DishdetailComponent implements OnInit {
     var n = d.toDateString().slice(4);
     this.comment.date = n;
     this.dish.comments.push(this.comment);
+    
+    // this.dishcopy.comments.push(this.comment);
+    // this.dishService.putDish(this.dishcopy)
+    //   .subscribe(dish => {
+    //     this.dish = dish; this.dishcopy = dish;
+    //   },
+    //   errmess => { this.dish = null; this.dishcopy = null; this.errMess = <any>errmess; });
+
     this.commentForm.reset({
       author: '',
       rating: '5',
       comment: ''
     });
+
   }
   onValueChanged(data?: any){
     if(!this.commentForm){ return; }
