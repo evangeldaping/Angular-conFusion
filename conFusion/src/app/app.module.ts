@@ -35,6 +35,7 @@ import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 //import { ProcessHTTPMsgSrvice } from './services/process-httpmsg.service';
+import { AuthService } from './services/auth.service';
 
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -81,7 +82,8 @@ import { HighlightDirective } from './directives/highlight.directive';
   providers: [
     DishService,
     PromotionService,
-    LeaderService
+    LeaderService,
+    AuthService
     //ProcessHTTPMsgSrvice
     //{provide: 'BaseURL', useValue: baseURL}
   ],
