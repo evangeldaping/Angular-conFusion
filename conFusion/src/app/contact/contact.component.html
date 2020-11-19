@@ -40,7 +40,8 @@
     <h3>Send us your Feedback</h3>
     <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
 
-    <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+    <!-- <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()"> -->
+    <form novalidate [formGroup]="feedbackForm" #fform="ngForm" *ngIf="!feedbackCopy && !displaySpinner" (ngSubmit)="onSubmit()" [@expand]>
       <p>
         <mat-form-field class="half-width">
           <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
@@ -80,6 +81,51 @@
       </p>
       <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
     </form>
+
+    <div *ngIf="feedbackCopy" [@expand]="">
+      <h2 mat-line="">Your submission</h2>
+      <br>
+      <span mat-line>
+        <b> First Name: </b>
+           {{feedbackCopy.firstname}}
+      </span>
+      <br>
+      <span mat-line>
+        <b> Last Name: </b>
+          {{feedbackCopy.lastname}}
+      </span>
+      <br>
+      <span mat-line>
+        <b> Tel. Number: </b>
+          {{feedbackCopy.telnum}}
+      </span>
+      <br>
+      <span mat-line>
+        <b> Email: </b>
+          {{feedbackCopy.email}}
+      </span>
+      <br>
+      <span mat-line>
+        <b> May We Contact You? </b>
+          {{feedbackCopy.agree}}
+      </span>
+      <br>
+      <span mat-line>
+        <b> How? </b>
+          {{feedbackCopy.contacttype}}
+      </span>
+      <br>
+      <span mat-line>
+        <b> Feedback: </b>
+          {{feedbackCopy.message}}
+      </span>
+      <br>
+    </div>
+    <div *ngIf="displaySpinner" [@expand]>
+      <h2> Submitting Form </h2>
+      <mat-spinner></mat-spinner>
+    </div>
+    
   </div>
 
 </div>

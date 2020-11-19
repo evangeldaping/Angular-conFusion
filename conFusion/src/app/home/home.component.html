@@ -33,20 +33,21 @@
       </mat-card-title>
     </mat-card-header>
     <img mat-card-image src={{promotion.image}} alt={{promotion.name}}>
+    <!-- <img mat-card-image src="{{BaseURL + promotion.image}}" alt={{promotion.name}}> -->
     <mat-card-content>
       <p>{{promotion.description}}
       </p>
     </mat-card-content>
   </mat-card>
   <div [hidden]="promotion">
-  <!-- <div [hidden]="promotion || dishErrMess "></div> -->
+  <!-- <div [hidden]="promotion || promoErrMess "></div> -->
     <mat-spinner></mat-spinner>
     <h4>Loading . . . Please Wait</h4>
   </div>
 
-  <!-- <div fxFlex *ngIf="dishErrMess ">
+  <!-- <div fxFlex *ngIf="promoErrMess ">
     <h2>Error</h2>
-    <h4>{{dishErrMess }}</h4>
+    <h4>{{promoErrMess }}</h4>
   </div> -->
 
   <mat-card *ngIf="leader" fxFlex [@expand]>
@@ -57,20 +58,21 @@
       </mat-card-title>
     </mat-card-header>
     <img mat-card-image src={{leader.image}} alt={{leader.name}}>
+    <!-- <img mat-card-image src="{{BaseURL + leader.image}}" alt={{leader.name}}> -->
     <mat-card-content>
       <p>{{leader.description}}
       </p>
     </mat-card-content>
   </mat-card>
   <div [hidden]="leader">
-   <!-- <div [hidden]="leader || dishErrMess "></div> -->
+   <!-- <div [hidden]="leader || leaderErrMess "></div> -->
     <mat-spinner></mat-spinner>
     <h4>Loading . . . Please Wait</h4>
   </div>
 
-  <!-- <div fxFlex *ngIf="dishErrMess ">
+  <!-- <div fxFlex *ngIf="leaderErrMess ">
     <h2>Error</h2>
-    <h4>{{dishErrMess }}</h4>
+    <h4>{{leaderErrMess }}</h4>
   </div> -->
 
 </div>
