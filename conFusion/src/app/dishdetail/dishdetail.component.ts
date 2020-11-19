@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { switchMap } from 'rxjs/operators';
 import { Comment } from '../shared/comment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+//import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-dishdetail',
@@ -17,6 +18,7 @@ export class DishdetailComponent implements OnInit {
   dishIds: string[];
   prev: string;
   next: string;
+  // errMess: string;
 
   comment: Comment;
   commentForm: FormGroup;
@@ -41,10 +43,17 @@ export class DishdetailComponent implements OnInit {
       this.createForm();
     }
 
+  // constructor(private dishService: DishService,
+  //   @Inject('baseURL') private baseURL) { }
+
   ngOnInit() {
     this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
     this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
     .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
+
+    // this.dishService.getDishes()
+    // .subscribe(dishes => this.dishes = dishes,
+    //   errmess => this.errMess = <any>errmess);
   }
 
   createForm(){
